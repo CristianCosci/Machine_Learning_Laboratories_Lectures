@@ -24,7 +24,7 @@ W^{[2]} := W^{[2]} - \alpha \frac{\delta J}{\delta W^{[2]}} \\
 b^{[2]} := b^{[2]} - \alpha \frac{\delta J}{\delta b^{[2]}}
 $$
 
-Our aim during backpropagation is to compute $$\frac{\delta J}{\delta W^{[1]}},\frac{\delta J}{\delta b^{[1]}},\frac{\delta J}{\delta W^{[2]}},$$ and $$\frac{\delta J}{\delta b^{[2]}}$$. For brevity, we denote these derivatives as $$dW^{[1]}, db^{[1]}, dW^{[2]},$$and $$db^{[2]}$$.We derive these values by traversing backward through the network, commencing with the calculation of $$\frac{\delta J}{\delta A^{[2]}}$$, or equivalently, $$dA^{[2]}$$. This derivative is elegantly expressed as:
+Our aim during backpropagation is to compute $$\frac{\delta J}{\delta W^{[1]}},\frac{\delta J}{\delta b^{[1]}},\frac{\delta J}{\delta W^{[2]}},$$ and $$\frac{\delta J}{\delta b^{[2]}}$$. For brevity, we denote these derivatives as $$dW^{[1]}, db^{[1]}, dW^{[2]},$$ and $$db^{[2]}$$.We derive these values by traversing backward through the network, commencing with the calculation of $$\frac{\delta J}{\delta A^{[2]}}$$, or equivalently, $$dA^{[2]}$$. This derivative is elegantly expressed as:
 
 $$dA^{[2]} = Y - A^{[2]}$$
 
@@ -41,7 +41,7 @@ Verification of this derivative can be conducted via calculus:
 - Considering $\hat{y}$ is obtained through the last layer of the neural network, we can represent $\hat{y}$ as $A^{[2]}$, while $y$ is represented as $Y$. Substituting $\hat{y}$ with $A^{[2]}$ and $y$ with $Y$, we get: $$J(A^{[2]}, Y) = -\sum_{i=0}^{c} Y_i \log(A^{[2]}_i)$$
 - Now, to compute $\frac{\delta J}{\delta A^{[2]}}$, let's consider a single component $i$: $$\frac{\delta J}{\delta A^{[2]}_i} = -\frac{\delta}{\delta A^{[2]}_i} (Y_i \log(A^{[2]}_i))$$
 - Applying the product rule and noting that $Y_i$ is either zero or one, hence constant with respect to $A^{[2]}_i$, we get: $$\frac{\delta J}{\delta A^{[2]}_i} = -\frac{Y_i}{A^{[2]}_i}$$
-- Extending this calculation to all components, we get: $$ \frac{\delta J}{\delta A^{[2]}} = -\frac{Y}{A^{[2]}} $$
+- Extending this calculation to all components, we get: $$\frac{\delta J}{\delta A^{[2]}} = -\frac{Y}{A^{[2]}}$$
 - Therefore, $dA^{[2]}$ will simply be the difference between $Y$ and $A^{[2]}$, since we have a vector subtraction: $$dA^{[2]} = Y - A^{[2]}$$
 - This result is crucial for computing gradients during the error backpropagation phase.
 
