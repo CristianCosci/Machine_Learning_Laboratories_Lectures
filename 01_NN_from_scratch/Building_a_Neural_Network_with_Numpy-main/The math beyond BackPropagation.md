@@ -15,7 +15,7 @@ Meanwhile, $y$ denotes the one-hot encoding of the correct label for the given t
 $$\begin{bmatrix} 0 \ 0 \ 0 \ 0 \ 1 \ 0 \ 0 \ 0 \ 0 \ 0 \ \end{bmatrix}$$
 
 
-Notably, in our summation $$\sum_{i=0}^{c} y_i \log(\hat{y}_i)$$, $y_i = 0$ for all $i$ except the correct label. Therefore, the loss for a specific example simplifies to the negative logarithm of the predicted probability associated with the correct classification. In our provided example, $$J(\hat{y}, y) = -\log(y_4) = -\log(0.80) \approx 0.097$$. Evidently, as the prediction probability approaches 1, the loss tends to 0, while as it tends to 0, the loss diverges towards $+\infty$. Minimizing the cost function is pivotal for enhancing model accuracy. This is achieved by iteratively adjusting the parameters using the derivatives of the loss function with respect to each parameter:
+Notably, in our summation $$\sum_{i=0}^{c} y_i \log(\hat{y}_i),$$ $y_i = 0$ for all $i$ except the correct label. Therefore, the loss for a specific example simplifies to the negative logarithm of the predicted probability associated with the correct classification. In our provided example, $$J(\hat{y}, y) = -\log(y_4) = -\log(0.80) \approx 0.097.$$ Evidently, as the prediction probability approaches 1, the loss tends to 0, while as it tends to 0, the loss diverges towards $+\infty$. Minimizing the cost function is pivotal for enhancing model accuracy. This is achieved by iteratively adjusting the parameters using the derivatives of the loss function with respect to each parameter:
 
 $$
 W^{[1]} := W^{[1]} - \alpha \frac{\delta J}{\delta W^{[1]}} \\ 
@@ -24,7 +24,7 @@ W^{[2]} := W^{[2]} - \alpha \frac{\delta J}{\delta W^{[2]}} \\
 b^{[2]} := b^{[2]} - \alpha \frac{\delta J}{\delta b^{[2]}}
 $$
 
-Our aim during backpropagation is to compute $$\frac{\delta J}{\delta W^{[1]}},\frac{\delta J}{\delta b^{[1]}},\frac{\delta J}{\delta W^{[2]}},$$ and $$\frac{\delta J}{\delta b^{[2]}}$$. For brevity, we denote these derivatives as $$dW^{[1]}, db^{[1]}, dW^{[2]},$$ and $$db^{[2]}$$.We derive these values by traversing backward through the network, commencing with the calculation of $$\frac{\delta J}{\delta A^{[2]}}$$, or equivalently, $$dA^{[2]}$$. This derivative is elegantly expressed as:
+Our aim during backpropagation is to compute $$\frac{\delta J}{\delta W^{[1]}},\frac{\delta J}{\delta b^{[1]}},\frac{\delta J}{\delta W^{[2]}},$$ and $$\frac{\delta J}{\delta b^{[2]}}.$$ For brevity, we denote these derivatives as $$dW^{[1]}, db^{[1]}, dW^{[2]},$$ and $$db^{[2]}.$$ We derive these values by traversing backward through the network, commencing with the calculation of $$\frac{\delta J}{\delta A^{[2]}},$$ or equivalently, $$dA^{[2]}.$$ This derivative is elegantly expressed as:
 
 $$dA^{[2]} = Y - A^{[2]}$$
 
